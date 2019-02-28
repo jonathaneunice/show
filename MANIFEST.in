@@ -1,0 +1,10 @@
+include README.rst
+include CHANGES.yml
+include pytest.ini
+include tox.ini
+include toxcov.ini
+include .coveragerc
+recursive-include test *.py
+recursive-include show/astor *.py
+recursive-include docs *.rst *.py *.png
+prune docs/_build

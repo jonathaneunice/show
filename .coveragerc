@@ -1,0 +1,11 @@
+[run]
+branch = False
+omit =
+    # show includes a prerelease copy of astor because the latest 
+    # published version doesn't support Python 3.{5,6} entirely; 
+    # don't take responsibility for its # testing here
+    */astor/*
+
+    # Termsize is basically untestable within pytest
+    # given how much IO redirection it does
+    *termsize*

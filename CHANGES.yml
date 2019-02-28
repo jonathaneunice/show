@@ -1,0 +1,254 @@
+-
+  version: 1.7.0
+  date: ???, 2017
+  notes: >
+    Major update in display techniques. Multi-line value
+    representations (e.g. as those common with NumPy and
+    Pandas output) now much more gracefully handled. ANSI
+    prettyprint now better integrated.
+    
+    Types can have custom repr(esentation) functions, for
+    clearer / terser output.
+    
+    Fixed obscure bug when ``show`` clones are named things with Unicode
+    characters that have NFKC normalized equivalents. Yes, really.
+    
+    Added ``show.quiet()`` to allow quickly silencing show statements
+    win specific functions/methods without removing them.
+    
+    
+-
+  version: 1.6.0
+  date: May 15, 2017
+  notes: >
+    Updated mechanism for method-specific option setting.
+    Still work in progress, but code now much cleaner.
+    
+    One additional routine, ``show.where``, can have its
+    method parameters set at runtime. More to follow as the
+    method-setting technique progresses.
+    
+    The experimental operator forms of ``show`` such as
+    ``>`` and ``>>`` have been withdrawn. The operator
+    style isn't consonant with Python philosophy, complicated
+    the code base, and only partially worked. Interesting idea,
+    but experience suggests they are not worth the trouble. 
+
+-
+  version: 1.5.0
+  date: May 14, 2017
+  notes: >
+    Changed name of parameter ``sep`` in ``hr``, ``title``,
+    and ``sep`` methods because discovered it was conflating
+    and interfering with the ``sep`` parameter in the main
+    options.  The horizontal separator character that is
+    repeated N times is now addressed as ``char``.
+    Also fixed bug in temporary turning off of output from 
+    those methods; fixed.
+    
+-
+  version: 1.4.8
+  date: March 22, 2017
+  notes: >
+    New ``show.pretty`` module. If you ``from show.pretty import *``
+    then pretty-printing will be automatically turned on, and a
+    Unicode solid square will be prefixed to every line, to make
+    it easier to visually distinguish debug output from normal
+    program output.
+    
+-
+  version: 1.4.7
+  date: March 9, 2017
+  notes: >
+    Bumped test coverage to 80%.  In the process,
+    discovered and fixed some bugs with ``show.props``.
+    Most things that can be basically unit-tested, are.
+    Largest remaining test coverage gaps concern operation
+    under different I/O managers--esp. IPython and the
+    standard Python REPL--that will require integration
+    testing.
+
+-
+  version: 1.4.6
+  date: March 1, 2017
+  notes: >
+    Quashed second bug related to IPython and its
+    ``%run`` command, especially as used by the
+    Enthought Canopy IDE.
+
+-
+  version: 1.4.5
+  date: March 1, 2017
+  notes: >
+    Fixed problem with IPython when program run with
+    the ``%run`` command. Fix esp. important for users
+    of Enthought Canopy IDE, which uses this mode of
+    execution extensively.
+
+-
+  version: 1.4.4
+  date: February 19, 2017
+  notes: >
+    Tweak ``show.prettyprint()`` to not automatically multi-line
+    all show output. If you want multi-line output, either
+    set ``show.prettyprint(sep='\m')`` to globalize that preference,
+    or use ``show(..., sep='\n)`` each time you want multi-line.
+
+
+-
+  version: 1.4.3
+  date: February 2, 2017
+  notes: >
+    Bug fix: When `show.set(prefix=...)` or other settings were
+    used, duplicate behaviors could occur, like two prefix strings
+    printing, not just one. Also, support for Python 2.6 has been
+    restored. Not that you should still be using that antiquated
+    buggy. But if you are, show will once again work for you, given
+    removal of the preventing dependency (``stuf``).
+
+-
+  version: 1.4.2
+  date: January 30, 2017
+  notes: >
+    Fixed bug when location display is active (e.g. after
+    `show.set(where=True)`) in IPython. Now correctly
+    identifies what cell code was executed in.
+
+
+-
+  version: 1.4.0
+  date: January 27, 2017
+  notes: >
+    Finally have good support for IPython, either in a Notebook or in
+    a terminal/console. Suddenly, interactive use does not minimize show's
+    usefulness (though the standard REPL still has glitches).
+
+-
+  version: 1.3.2
+  date: January 26, 2017
+  notes: >
+    Fixes nasty packaging bug (failure to bundle astor sub-package into
+    source distributions) that didn't show up in testing. 
+
+-
+  version: 1.3.0
+  date: January 25, 2017
+  notes: >
+    Python 3.5 and 3.6 now pass formal verification. This required
+    embedding a 'nightly' build of astor 0.6 that has not yet
+    made it to PyPI. Given the shift from codegen to newer astor
+    AST-to-source library, bumping minor version.
+
+-
+  version: 1.2.7
+  date: January 23, 2017
+  notes: >
+    Updated dependencies to support Python 3.5 and 3.6. These
+    versions do not yet pass formal validation, but they do seem
+    to work in informal testing. This is the start of a push to
+    fully support these most recent Python implementations, and
+    to improve support for interactive code (REPL or Jupyter Notebook).
+
+-
+  version: 1.2.6
+  date: September 1, 2015
+  notes: >
+    Tweaks and testing for new version of underlying ``options``
+    module that returns operation to Python 2.6.
+-
+  version: 1.2.4
+  date: August 26, 2015
+  notes: Major documentation reorg.
+
+-
+  version: 1.2.3
+  date: August 25, 2015
+  notes: Code cleanups and additional testing. Test coverage now 77%.
+
+-
+  version: 1.2.1
+  date: August 21, 2015
+  notes: >
+    Added ability to give ``@show.inout`` decorator its own parameters. Deprecated
+    ``@show.retval``, which is now redunant with ``@show.inout(only=''out'')``.
+
+    Test coverage bumped to 71%.
+
+-
+  version: 1.2.0
+  date: August 18, 2015
+  notes: Added ``show.where()`` as a marker for "where am I now?" Improved docs, esp.
+    for ``where``, ``inout``, and ``retval`` methods. Improved testing. Now at 67%
+    line coverage.
+
+-
+  version: 1.1.1
+  date: August 17, 2015
+  notes: >
+    Updated testing strategy to integrate automated test coverage metrics. Immediate
+    test and code improvements as a result. Initial coverage was 53%. Releasing now
+    at 57%.
+
+    Clearly backed out Python 3.5 support for the moment. The AST ``Call`` signature
+    has changed notably. Will need to deep-dive to fix that.
+
+-
+  version: 1.1.0
+  date: August 16, 2015
+  notes: Fixed problem with underlying ``say`` object interactions. Some doc and testing
+    tweaks.
+
+-
+  version: 1.0.4
+  date: July 22, 2015
+  notes: Updated config, docs, and testing matrix.
+
+-
+  version: 1.0.2
+  date: September 16, 2013
+  notes: >
+    Improved pretty printing of code snippets for ``@show.inout`` and ``@show.retval``
+    decorators.
+
+    Made ``show`` also accept lambdas to link to variable values.
+
+    Added ``noshow`` object for easy turning off of showing.
+
+    General cleanups. Tightened imports. Tweaked docs. Switched to ``FmtException``
+    from ``say>=1.0.4``, and separated extensions into own module.
+
+    Drove version information into ``version.py``
+
+-
+  version: 1.0.1
+  date: September 2013
+  notes: Moved main documentation to Sphinx format in ./docs, and hosted the long-form
+    documentation on readthedocs.org. README.rst now an abridged version/teaser for
+    the module.
+
+-
+  version: 1.0.0
+  date: September 2013
+  notes: >
+    Improved robustness for interactive use. If names cannot be detected, still
+    gives value result with ``?`` pseudo-name.
+
+    Improved type names for ``show.dir`` and ``show.props``
+
+    Improved ``show.inout`` with full call string on function return. A bit verbose
+    in small tests, but too easy to lose "what was this called with??" context in
+    real-scale usage unless there is clear indication of how the function was called.
+
+    Improved omission of probably useless display properties via ``omit`` keyword.
+
+    Began to add support for showing properties even when proxied through another
+    object. Currently limited to selected SQLAlchemy and Flask proxies. More to come.
+
+    Cleaned up source for better (though still quite imperfect), PEP8 conformance
+
+    Bumped version number to 1.0 as part of move to `semantic versioning <http://semver.org>`_,
+    or at least enough of it so as to not screw up Python installation procedures
+    (which don't seem to understand 0.401 is a lesser version that 0.5, because 401
+    > 5).
+
+    Probably several other things I've now forgotten.
